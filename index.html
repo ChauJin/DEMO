@@ -1,56 +1,55 @@
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+    <script>
+      const showInfo = () => {
+        let y = 0;
+        const profileButton = document.querySelector("#profile-button");
+        const webButton = document.querySelector("#web-button");
+        const emailButton = document.querySelector("#email-button");
+        const locationButton = document.querySelector("#location-button");
+        const text = document.querySelector("#text");
 
-  <script>
-    const showInfo = () => {
-      let y = 0;
-      const profileButton = document.querySelector("#profile-button"); //a
-      const webButton = document.querySelector("#web-button"); //b
-      const emailButton = document.querySelector("#email-button"); //c
-      const locationButton = document.querySelector("#location-button"); //d
-      const text = document.querySelector("#text");
+        profileButton.setAttribute("visible", true);
+        setTimeout(() => {
+          webButton.setAttribute("visible", true);
+        }, 300);
+        setTimeout(() => {
+          emailButton.setAttribute("visible", true);
+        }, 600);
+        setTimeout(() => {
+          locationButton.setAttribute("visible", true);
+        }, 900);
 
-      profileButton.setAttribute("visible", true);
-      setTimeout(() => {
-        webButton.setAttribute("visible", true);
-      }, 300);
-      setTimeout(() => {
-        emailButton.setAttribute("visible", true);
-      }, 600);
-      setTimeout(() => {
-        locationButton.setAttribute("visible", true);
-      }, 900);
+        let currentTab = '';
+        webButton.addEventListener('click', function (evt) {
+          text.setAttribute("value", "農曆");
+          currentTab = 'web';
+        });
+        emailButton.addEventListener('click', function (evt) {
+          text.setAttribute("value", "太陰曆");
+          currentTab = 'email';
+        });
+        profileButton.addEventListener('click', function (evt) {
+          text.setAttribute("value", "陽曆");
+          currentTab = 'profile';
+        });
+        locationButton.addEventListener('click', function (evt) {
+          console.log("loc");
+          text.setAttribute("value", "國際標準曆");
+          currentTab = 'location';
+        });
 
-      // JavaScript: Modify event listeners and showInfo function
-      profileButton.addEventListener('click', function () {
-        checkAnswer('a'); // Change 'a' to the correct answer
-      });
-
-      webButton.addEventListener('click', function () {
-        checkAnswer('b'); // Change 'b' to the correct answer
-      });
-
-      emailButton.addEventListener('click', function () {
-        checkAnswer('c'); // Change 'c' to the correct answer
-      });
-
-      locationButton.addEventListener('click', function () {
-        checkAnswer('d'); // Change 'd' to the correct answer
-      });
-
-      const checkAnswer = (selectedAnswer) => {
-        const correctAnswer = 'b'; // Change this to the correct answer
-        if (selectedAnswer === correctAnswer) {
-          text.setAttribute("value", "Correct!"); // Update the text for correct answer
-        } else {
-          text.setAttribute("value", "Wrong!"); // Update the text for wrong answer
-        }
-      };
+        text.addEventListener('click', function (evt) {
+          if (currentTab === 'web') {
+            window.location.href="https://softmind.tech";
+          }
+        });
+      }
 
       const showPortfolio = (done) => {
         const portfolio = document.querySelector("#portfolio-panel");
@@ -85,8 +84,8 @@
 
             paintandquestPreviewButton.addEventListener('click', () => {
               paintandquestPreviewButton.setAttribute("visible", false);
-              const testVideo = document.createElement("video");
-              const canplayWebm = testVideo.canPlayType('video/webm; codecs="vp8, vorbis"');
+              const testVideo = document.createElement( "video" );
+              const canplayWebm = testVideo.canPlayType( 'video/webm; codecs="vp8, vorbis"' );
               if (canplayWebm == "") {
                 document.querySelector("#paintandquest-video-link").setAttribute("src", "#paintandquest-video-mp4");
                 document.querySelector("#paintandquest-video-mp4").play();
@@ -137,186 +136,162 @@
           //this.el.emit('targetFound');
         }
       });
-  </script>
+    </script>
 
-  <style>
-    body {
-      margin: 0;
-    }
+    <style>
+      body {
+        margin: 0;
+      }
+      .example-container {
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+     
+      #example-scanning-overlay {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: transparent;
+	z-index: 2;
+      }
+      @media (min-aspect-ratio: 1/1) {
+	#example-scanning-overlay .inner {
+	  width: 50vh;
+	  height: 50vh;
+	}
+      }
+      @media (max-aspect-ratio: 1/1) {
+	#example-scanning-overlay .inner {
+	  width: 80vw;
+	  height: 80vw;
+	}
+      }
 
-    .example-container {
-      overflow: hidden;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    #example-scanning-overlay {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      background: transparent;
-      z-index: 2;
-    }
-
-    @media (min-aspect-ratio: 1/1) {
       #example-scanning-overlay .inner {
-        width: 50vh;
-        height: 50vh;
-      }
-    }
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
 
-    @media (max-aspect-ratio: 1/1) {
-      #example-scanning-overlay .inner {
-        width: 80vw;
-        height: 80vw;
-      }
-    }
-
-    #example-scanning-overlay .inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-
-      background:
-        linear-gradient(to right, white 10px, transparent 10px) 0 0,
-        linear-gradient(to right, white 10px, transparent 10px) 0 100%,
-        linear-gradient(to left, white 10px, transparent 10px) 100% 0,
-        linear-gradient(to left, white 10px, transparent 10px) 100% 100%,
-        linear-gradient(to bottom, white 10px, transparent 10px) 0 0,
-        linear-gradient(to bottom, white 10px, transparent 10px) 100% 0,
-        linear-gradient(to top, white 10px, transparent 10px) 0 100%,
-        linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
-      background-repeat: no-repeat;
-      background-size: 40px 40px;
-    }
-
-    #example-scanning-overlay.hidden {
-      display: none;
-    }
-
-    #example-scanning-overlay img {
-      opacity: 0.6;
-      width: 90%;
-      align-self: center;
-    }
-
-    #example-scanning-overlay .inner .scanline {
-      position: absolute;
-      width: 100%;
-      height: 10px;
-      background: white;
-      animation: move 2s linear infinite;
-    }
-
-    @keyframes move {
-
-      0%,
-      100% {
-        top: 0%
+	background:
+	  linear-gradient(to right, white 10px, transparent 10px) 0 0,
+	  linear-gradient(to right, white 10px, transparent 10px) 0 100%,
+	  linear-gradient(to left, white 10px, transparent 10px) 100% 0,
+	  linear-gradient(to left, white 10px, transparent 10px) 100% 100%,
+	  linear-gradient(to bottom, white 10px, transparent 10px) 0 0,
+	  linear-gradient(to bottom, white 10px, transparent 10px) 100% 0,
+	  linear-gradient(to top, white 10px, transparent 10px) 0 100%,
+	  linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
       }
 
-      50% {
-        top: calc(100% - 10px)
+      #example-scanning-overlay.hidden {
+	display: none;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="example-container">
-    <div id="example-scanning-overlay" class="hidden">
-      <div class="inner">
-        <img src="./assets/treasure-hunt.png" />
-        <div class="scanline"></div>
+      #example-scanning-overlay img {
+	opacity: 0.6;
+	width: 90%;
+	align-self: center;
+      }
+
+      #example-scanning-overlay .inner .scanline {
+	position: absolute;
+	width: 100%;
+	height: 10px;
+	background: white;
+	animation: move 2s linear infinite;
+      }
+      @keyframes move {
+	0%, 100% { top: 0% }
+	50% { top: calc(100% - 10px) }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="example-container">
+      <div id="example-scanning-overlay" class="hidden">
+	<div class="inner">
+	  <img src="./assets/treasure-hunt.png"/>
+	  <div class="scanline"></div>
+	</div>
       </div>
-    </div>
 
-    <a-scene
-      mindar-image="imageTargetSrc: ./assets/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;"
-      embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
-      device-orientation-permission-ui="enabled: false">
-      <a-assets>
-        <img id="card" src="./assets/treasure-hunt.png" />
-        <img id="icon-web" src="./assets/letter-b.png" />
-        <img id="icon-location" src="./assets/letter-d.png" />
-        <img id="icon-profile" src="./assets/letter-a.png" />
-        <!-- <img id="icon-phone" src="./assets/letter-d.png" /> -->
-        <img id="icon-email" src="./assets/letter-c.png" />
-        <img id="icon-play" src="./assets/play.png" />
-        <img id="icon-left" src="./assets/left-arrow.png" />
-        <img id="icon-right" src="./assets/right-arrow.png" />
-        <img id="paintandquest-preview" src="./assets/Mid-autumn-festival-rabbit.png" />
-        <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="./assets/mooncake.mp4"></video>
-        <video id="paintandquest-video-webm" autoplay="false" loop="true" src="./assets/mooncake.webm"></video>
-        <img id="coffeemachine-preview" src="./assets/mooncake.png" />
-        <img id="peak-preview" src="./assets/mooncake2.png" />
+      <a-scene mindar-image="imageTargetSrc: ./assets/targets.mind; showStats: false; uiScanning: #example-scanning-overlay;" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+          <img id="card" src="./assets/treasure-hunt.png" />
+          <img id="icon-web" src="./assets/letter-b.png" />
+          <img id="icon-location" src="./assets/letter-d.png" />
+          <img id="icon-profile" src="./assets/letter-a.png" />
+          <img id="icon-phone" src="./assets/letter-d.png" />
+          <img id="icon-email" src="./assets/letter-c.png" />
+          <img id="icon-play" src="./assets/play.png" />
+          <img id="icon-left" src="./assets/left-arrow.png" />
+          <img id="icon-right" src="./assets/right-arrow.png" />
+          <img id="paintandquest-preview" src="./assets/Mid-autumn-festival-rabbit.png" />
+          <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="./assets/mooncake.mp4"></video>
+          <video id="paintandquest-video-webm" autoplay="false" loop="true" src="./assets/mooncake.webm"></video>
+          <img id="coffeemachine-preview" src="./assets/mooncake.png" />
+          <img id="peak-preview" src="./assets/mooncake2.png" />
+          
+          <a-asset-item id="avatarModel" src="./3DMoonCake2/mooncake.glb" scale="0.3" gesture-handler></a-asset-item>
+        </a-assets>
 
-        <a-asset-item id="avatarModel" src="./3DMoonCake/scene.gltf" scale="0.3" gesture-handler></a-asset-item>
-      </a-assets>
+        <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
+        </a-camera>
 
-      <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;"
-        raycaster="far: 10000; objects: .clickable">
-      </a-camera>
+        <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
+          <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
 
-      <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+          <a-entity visible=false id="portfolio-panel" position="0 0 -0.01">
+            <a-text value="Lantern Riddles" color="black" align="center" width="2" position="0 0.4 0"></a-text>
+            <a-entity id="portfolio-item0">
+              <a-video id="paintandquest-video-link" webkit-playsinline playsinline width="1" height="0.552" position="0 0 0"></a-video>
+              <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview" alpha-test="0.5" position="0 0 0" height="0.552" width="1">
+              </a-image>
+            </a-entity>
+            <a-entity id="portfolio-item1" visible=false>
+              <a-image class="clickable" src="#coffeemachine-preview" alpha-test="0.5" position="0 0 0" height="0.552" width="1">
+              </a-image>
+            </a-entity>
+            <a-entity id="portfolio-item2" visible=false>
+              <a-image class="clickable" src="#peak-preview" alpha-test="0.5" position="0 0 0" height="0.552" width="1">
+              </a-image>
+            </a-entity>
 
-        <a-entity visible=false id="portfolio-panel" position="0 0 -0.01">
-          <a-text value="Lantern Riddles" color="pink" align="center" width="2" position="0 0.4 0"></a-text>
-          <a-entity id="portfolio-item0">
-            <a-video id="paintandquest-video-link" webkit-playsinline playsinline width="1" height="0.552"
-              position="0 0 0"></a-video>
-            <a-image id="paintandquest-preview-button" class="clickable" src="#paintandquest-preview" alpha-test="0.5"
-              position="0 0 0" height="0.552" width="1">
-            </a-image>
-          </a-entity>
-          <a-entity id="portfolio-item1" visible=false>
-            <a-image class="clickable" src="#coffeemachine-preview" alpha-test="0.5" position="0 0 0" height="0.552"
-              width="1">
-            </a-image>
-          </a-entity>
-          <a-entity id="portfolio-item2" visible=false>
-            <a-image class="clickable" src="#peak-preview" alpha-test="0.5" position="0 0 0" height="0.552" width="1">
-            </a-image>
+            <a-image visible=false id="portfolio-left-button" class="clickable" src="#icon-left" position="-0.7 0 0" height="0.15" width="0.15"></a-image>
+            <a-image visible=false id="portfolio-right-button" class="clickable" src="#icon-right" position="0.7 0 0" height="0.15" width="0.15"></a-image>
           </a-entity>
 
-          <a-image visible=false id="portfolio-left-button" class="clickable" src="#icon-left" position="-0.7 0 0"
-            height="0.15" width="0.15"></a-image>
-          <a-image visible=false id="portfolio-right-button" class="clickable" src="#icon-right" position="0.7 0 0"
-            height="0.15" width="0.15"></a-image>
+          <a-image visible=false id="profile-button" class="clickable" src="#icon-profile" position="-0.42 -0.5 0" height="0.15" width="0.15"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image visible=false id="web-button" class="clickable" src="#icon-web" alpha-test="0.5" position="-0.14 -0.5 0" height="0.15" width="0.15"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image visible=false id="email-button" class="clickable" src="#icon-email"  position="0.14 -0.5 0" height="0.15" width="0.15"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image visible=false id="location-button" class="clickable" src="#icon-location" position="0.42 -0.5 0" height="0.15" width="0.15"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-gltf-model id="avatar" rotation="0 0 0" position="0 -0.25 0" scale="0.004 0.004 0.004" src="#avatarModel"></a-gltf-model>
+
+          <a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
         </a-entity>
-
-        <a-image visible=false id="profile-button" class="clickable" src="#icon-profile" position="-0.42 -0.5 0"
-          height="0.15" width="0.15"
-          animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-
-        <a-image visible=false id="web-button" class="clickable" src="#icon-web" alpha-test="0.5"
-          position="-0.14 -0.5 0" height="0.15" width="0.15"
-          animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-
-        <a-image visible=false id="email-button" class="clickable" src="#icon-email" position="0.14 -0.5 0"
-          height="0.15" width="0.15"
-          animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-
-        <a-image visible=false id="location-button" class="clickable" src="#icon-location" position="0.42 -0.5 0"
-          height="0.15" width="0.15"
-          animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-image>
-
-        <a-gltf-model id="avatar" rotation="0 0 0" position="0 -0.25 0" scale="0.004 0.004 0.004"
-          src="#avatarModel"></a-gltf-model>
-
-        <a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0"
-          geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
-      </a-entity>
-    </a-scene>
-  </div>
-</body>
-
+      </a-scene>
+    </div>
+  </body>
 </html>
