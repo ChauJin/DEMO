@@ -4,7 +4,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.0.0/dist/aframe-extras.min.js"></script>
     <script>
       const showInfo = () => {
         let y = 0;
@@ -242,7 +242,7 @@
           <img id="coffeemachine-preview" src="./assets/mooncake.png" />
           <img id="peak-preview" src="./assets/mooncake2.png" />
           
-          <a-asset-item id="avatarModel" src="./3DMoonCake/scene.gltf"></a-asset-item>
+          <a-asset-item id="avatarModel" src="./3DMoonCake/scene.gltf" scale="0.5" gesture-handler></a-asset-item>
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable">
