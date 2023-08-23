@@ -5,6 +5,61 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const sceneEl = document.querySelector('a-scene');
+      let arSystem;
+      sceneEl.addEventListener('loaded', function () {
+        arSystem = sceneEl.systems["mindar-image-system"];
+      });
+      const exampleTarget = document.querySelector('#mytarget');
+      const examplePlane = document.querySelector('#example-plane');
+      const startButton = document.querySelector("#example-start-button");
+      const stopButton = document.querySelector("#example-stop-button");
+      const pauseButton = document.querySelector("#example-pause-button");
+      const pauseKeepVideoButton = document.querySelector("#example-pause-keep-video-button");
+      const unpauseButton = document.querySelector("#example-unpause-button");
+      startButton.addEventListener('click', () => {
+        console.log("start");
+        arSystem.start(); // start AR 
+      });
+      stopButton.addEventListener('click', () => {
+        arSystem.stop(); // stop AR 
+      });
+      pauseButton.addEventListener('click', () => {
+        arSystem.pause(); // pause AR, pause video
+      });
+      pauseKeepVideoButton.addEventListener('click', () => {
+        arSystem.pause(true); // pause AR, keep video
+      });
+      unpauseButton.addEventListener('click', () => {
+        arSystem.unpause(); // unpause AR and video
+      });
+      // arReady event triggered when ready
+      sceneEl.addEventListener("arReady", (event) => {
+        // console.log("MindAR is ready")
+      });
+      // arError event triggered when something went wrong. Mostly browser compatbility issue
+      sceneEl.addEventListener("arError", (event) => {
+        // console.log("MindAR failed to start")
+      });
+      // detect target found
+      exampleTarget.addEventListener("targetFound", event => {
+        console.log("target found");
+      });
+      // detect target lost
+      exampleTarget.addEventListener("targetLost", event => {
+        console.log("target lost");
+      });
+      // detect click event
+      examplePlane.addEventListener("click", event => {
+        console.log("plane click");
+      });
+    });
+  </script>
+
+
+
 
   <script>
     const showInfo = () => {
@@ -269,7 +324,7 @@
       <a-sound src="./music/beauteous-upbeat-electronic.wav" autoplay="true" position="-3 1 -4"></a-sound>
 
       <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
-        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-plane id="example-plane" src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
 
         <a-entity visible=false id="portfolio-panel" position="0 0 -0.01">
           <a-text value="Lantern Riddles" color="#fed330" align="center" width="2" position="0 0.4 0"></a-text>
@@ -296,8 +351,9 @@
             height="0.15" width="0.15"></a-image>
         </a-entity>
 
-        <a-text id="text" class="clickable" value="What is the capital of France?" color="black" align="center" width="2" position="0 -1 0"
-          geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
+        <a-text id="text" class="clickable" value="What is the capital of France?" color="black" align="center"
+          width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;"
+          material="opacity: 0.5"></a-text>
 
         <a-image visible=false id="profile-button" class="clickable" src="#icon-profile" position="-0.42 -1.5 0"
           height="0.15" width="0.15"
@@ -351,10 +407,10 @@
           answer: "B"
         }
       ];
-    
+
       var currentQuestion = 0;
       var score = 0;
-    
+
       function checkAnswer(choice) {
         if (choice === questions[currentQuestion].answer) {
           document.getElementById("text2").setAttribute("value", "Correct!");
@@ -362,14 +418,14 @@
         } else {
           document.getElementById("text2").setAttribute("value", "Wrong!");
         }
-    
+
         currentQuestion++;
-    
+
         if (currentQuestion < questions.length) {
           document.getElementById("text").setAttribute("value", questions[currentQuestion].question);
         } else {
           document.getElementById("text").setAttribute("value", "Game over! Your score is " + score + "/5.");
-    
+
           if (score === 5) {
             document.getElementById("redeem-button").setAttribute("visible", true);
           }
