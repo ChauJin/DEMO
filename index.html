@@ -435,6 +435,7 @@
         if (choice === questions[currentQuestion].answer) {
           document.getElementById("text2").setAttribute("value", "Correct!");
           score++;
+          roundsWon++
         } else {
           document.getElementById("text2").setAttribute("value", "Wrong!");
         }
@@ -446,8 +447,7 @@
         } else {
           document.getElementById("text").setAttribute("value", "Game over! Your score is " + score + "/5.");
 
-          if (score === 5) {
-            roundsWon++;
+          if (score >=1 && roundsWon <=5) {
             var rewardImageSrc = "./assets/redeemQRcode" + (roundsWon * 10) + ".png";
 
             const qrCodeImage = document.createElement("img");
