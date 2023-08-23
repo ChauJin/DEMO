@@ -435,14 +435,10 @@
     document.getElementById("text").setAttribute("value", "Game over! Your score is " + score + "/5.");
 
     if (score === 5) {
-      const redeemButton = document.getElementById("redeem-button");
-      redeemButton.setAttribute("visible", true);
-      redeemButton.addEventListener('click', function (evt) {
-        const qrCodeImage = document.createElement("img");
-        qrCodeImage.setAttribute("src", "qrcode.jpg");
-        document.body.appendChild(qrCodeImage);
-        arSystem.stop(); // stop the AR system
-      });
+      const qrCodeImage = document.createElement("img");
+      qrCodeImage.setAttribute("src", "./assets/redeemQRcode.png");
+      document.body.appendChild(qrCodeImage);
+      arSystem.stop(); // stop the AR system
     }
   }
 }
