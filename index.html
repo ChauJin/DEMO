@@ -337,8 +337,9 @@
             height="0.15" width="0.15"></a-image>
         </a-entity>
 
-        <a-text id="text" class="clickable" value="According to which calendar is the Mid-Autumn Festival's date determined? A. Gregorian calendar B. Lunar calendar C. Lunisolar calendar D. International standard calendar" color="black" align="center"
-          width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;"
+        <a-text id="text" class="clickable"
+          value="According to which calendar is the Mid-Autumn Festival's date determined? A. Gregorian calendar B. Lunar calendar C. Lunisolar calendar D. International standard calendar"
+          color="black" align="center" width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;"
           material="opacity: 0.5"></a-text>
 
         <a-image visible=false id="profile-button" class="clickable" src="#icon-profile" position="-0.42 -1.5 0"
@@ -420,13 +421,15 @@
             qrCodeImage.setAttribute("src", rewardImageSrc);
             qrCodeImage.style.display = "block";
             qrCodeImage.style.margin = "auto";
+            qrCodeImage.style.maxWidth = "100%"; // Set maximum width to fit the screen
+            qrCodeImage.style.maxHeight = "100%"; // Set maximum height to fit the screen
 
             const qrCodeDiv = document.createElement("div");
             qrCodeDiv.style.position = "absolute";
             qrCodeDiv.style.top = "0";
             qrCodeDiv.style.left = "0";
-            qrCodeDiv.style.width = "85%";
-            qrCodeDiv.style.height = "85%";
+            qrCodeDiv.style.width = "100%";
+            qrCodeDiv.style.height = "100%";
             qrCodeDiv.style.backgroundColor = "white";
             qrCodeDiv.style.display = "flex";
             qrCodeDiv.style.justifyContent = "center";
@@ -446,6 +449,7 @@
             arSystem.stop(); // stop the AR system
           }
         }
+
       }
     </script>
   </div>
