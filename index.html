@@ -15,6 +15,11 @@
       const locationButton = document.querySelector("#location-button");
       const text = document.querySelector("#text");
 
+      const stopButton = document.querySelector("#example-stop-button");
+      stopButton.addEventListener('click', () => {
+	  arSystem.stop(); // stop AR 
+	});
+
 
       profileButton.addEventListener('click', function (evt) {
         arSystem.pause(true); // pause AR, keep video
@@ -235,6 +240,12 @@
 </head>
 
 <body>
+  <div style="position: absolute; z-index: 1000">
+
+    <button id="example-stop-button">Stop</button>
+
+  </div>
+
   <div class="example-container">
     <div id="example-scanning-overlay" class="hidden">
       <div class="inner">
