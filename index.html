@@ -230,7 +230,14 @@
 </head>
 
 <body>
-  <script>
+  <div> <button id="start-button">start</button>
+    <button id="stop-button">Stop</button>
+    <button id="pause-button">pause</button>
+    <button id="pauseKeepVideoAR-button">pauseKeepVideoAR</button>
+    <button id="unpause-button">unpause</button>
+  </div>
+
+<script>
  function startAR() {
         arSystem.start();
       }
@@ -273,15 +280,7 @@
         unpause();
       });
 
-  </script>
-  <div> <button id="start-button">start</button>
-    <button id="stop-button">Stop</button>
-    <button id="pause-button">pause</button>
-    <button id="pauseKeepVideoAR-button">pauseKeepVideoAR</button>
-    <button id="unpause-button">unpause</button>
-  </div>
-
-
+</script>
 
 
   <div class="example-container">
