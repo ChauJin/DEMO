@@ -14,17 +14,11 @@
       const emailButton = document.querySelector("#email-button");
       const locationButton = document.querySelector("#location-button");
       const text = document.querySelector("#text");
-      // Define the arSystem variable
-      const arSystem = new MindAR.ImageARSystem();
 
-      // Get the pause-keep-video-button element
-      const pauseKeepVideoButton = document.getElementById("pause-keep-video-button");
 
-      // Add an event listener to the button
-      pauseKeepVideoButton.addEventListener('click', () => {
+      profileButton.addEventListener('click', function (evt) {
         arSystem.pause(true); // pause AR, keep video
       });
-
 
       profileButton.setAttribute("visible", true);
       setTimeout(() => {
