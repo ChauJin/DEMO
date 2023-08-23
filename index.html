@@ -15,6 +15,7 @@
       const locationButton = document.querySelector("#location-button");
       const text = document.querySelector("#text");
 
+
       profileButton.setAttribute("visible", true);
       setTimeout(() => {
         webButton.setAttribute("visible", true);
@@ -230,60 +231,6 @@
 </head>
 
 <body>
-  <div> <button id="start-button">start</button>
-    <button id="stop-button">Stop</button>
-    <button id="pause-button">pause</button>
-    <button id="pauseKeepVideoAR-button">pauseKeepVideoAR</button>
-    <button id="unpause-button">unpause</button>
-  </div>
-
-  <script>
-    function startAR() {
-      arSystem.start();
-    }
-
-    function stopAR() {
-      arSystem.stop();
-    }
-
-    function pauseAR() {
-      arSystem.pause(false); // pause AR, pause video
-    }
-
-    function pauseKeepVideoAR() {
-      arSystem.pause(true); // pause AR, keep video
-    }
-
-    function unpauseAR() {
-      arSystem.unpause();
-    }
-
-
-    const stopButton = document.getElementById("stop-button");
-    const startButton = document.getElementById("start-button");
-    const pauseARButton = document.getElementById("pause-button");
-    const pauseKeepVideoARButton = document.getElementById("pauseKeepVideoAR-button");
-    const unpaseButton = document.getElementById("unpause-button");
-
-    // stopButton.addEventListener('click', function (evt) {
-    //   stopAR();
-    // });
-    startButton.addEventListener('click', function (evt) {
-      start();
-    });
-    pauseARButton.addEventListener('click', function (evt) {
-      pause(false);
-    });
-    stopButton.addEventListener('click', function (evt) {
-      arSystem.pause(true); // pause AR, keep video
-    });
-    unpaseButton.addEventListener('click', function (evt) {
-      unpause();
-    });
-
-  </script>
-
-
   <div class="example-container">
     <div id="example-scanning-overlay" class="hidden">
       <div class="inner">
@@ -349,9 +296,8 @@
             height="0.15" width="0.15"></a-image>
         </a-entity>
 
-        <a-text id="text" class="clickable" value="What is the capital of France?" color="black" align="center"
-          width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;"
-          material="opacity: 0.5"></a-text>
+        <a-text id="text" class="clickable" value="What is the capital of France?" color="black" align="center" width="2" position="0 -1 0"
+          geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
 
         <a-image visible=false id="profile-button" class="clickable" src="#icon-profile" position="-0.42 -1.5 0"
           height="0.15" width="0.15"
@@ -405,10 +351,10 @@
           answer: "B"
         }
       ];
-
+    
       var currentQuestion = 0;
       var score = 0;
-
+    
       function checkAnswer(choice) {
         if (choice === questions[currentQuestion].answer) {
           document.getElementById("text2").setAttribute("value", "Correct!");
@@ -416,14 +362,14 @@
         } else {
           document.getElementById("text2").setAttribute("value", "Wrong!");
         }
-
+    
         currentQuestion++;
-
+    
         if (currentQuestion < questions.length) {
           document.getElementById("text").setAttribute("value", questions[currentQuestion].question);
         } else {
           document.getElementById("text").setAttribute("value", "Game over! Your score is " + score + "/5.");
-
+    
           if (score === 5) {
             document.getElementById("redeem-button").setAttribute("visible", true);
           }
