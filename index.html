@@ -237,50 +237,51 @@
     <button id="unpause-button">unpause</button>
   </div>
 
-<script>
- function startAR() {
-        arSystem.start();
-      }
+  <script>
+    function startAR() {
+      arSystem.start();
+    }
 
-      function stopAR() {
-        arSystem.stop();
-      }
+    function stopAR() {
+      arSystem.stop();
+    }
 
-      function pauseAR() {
-        arSystem.pause(false); // pause AR, pause video
-      }
+    function pauseAR() {
+      arSystem.pause(false); // pause AR, pause video
+    }
 
-      function pauseKeepVideoAR() {
-        arSystem.pause(true); // pause AR, keep video
-      }
+    function pauseKeepVideoAR() {
+      arSystem.pause(true); // pause AR, keep video
+    }
 
-      function unpauseAR() {
-        arSystem.unpause();
-      }
+    function unpauseAR() {
+      arSystem.unpause();
+    }
 
 
-      const stopButton = document.getElementById("stop-button");
-      const startButton = document.getElementById("start-button");
-      const pauseARButton = document.getElementById("pause-button");
-      const pauseKeepVideoARButton = document.getElementById("pauseKeepVideoAR-button");
-      const unpaseButton = document.getElementById("unpause-button");
+    const stopButton = document.getElementById("stop-button");
+    const startButton = document.getElementById("start-button");
+    const pauseARButton = document.getElementById("pause-button");
+    const pauseKeepVideoARButton = document.getElementById("pauseKeepVideoAR-button");
+    const unpaseButton = document.getElementById("unpause-button");
 
-      stopButton.addEventListener('click', function (evt) {
-        stopAR();
-      });
-      startButton.addEventListener('click', function (evt) {
-        start();
-      });
-      pauseARButton.addEventListener('click', function (evt) {
-        pause(false);
-      });
-      pauseKeepVideoARButton.addEventListener('click', function (evt) {
-        pause(true);
-      }); unpaseButton.addEventListener('click', function (evt) {
-        unpause();
-      });
+    // stopButton.addEventListener('click', function (evt) {
+    //   stopAR();
+    // });
+    startButton.addEventListener('click', function (evt) {
+      start();
+    });
+    pauseARButton.addEventListener('click', function (evt) {
+      pause(false);
+    });
+    stopButton.addEventListener('click', function (evt) {
+      arSystem.pause(true); // pause AR, keep video
+    });
+    unpaseButton.addEventListener('click', function (evt) {
+      unpause();
+    });
 
-</script>
+  </script>
 
 
   <div class="example-container">
