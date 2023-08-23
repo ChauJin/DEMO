@@ -437,7 +437,17 @@
     if (score === 5) {
       const qrCodeImage = document.createElement("img");
       qrCodeImage.setAttribute("src", "./assets/redeemQRcode.png");
-      document.body.appendChild(qrCodeImage);
+
+      const qrCodeDiv = document.createElement("div");
+      qrCodeDiv.style.position = "absolute";
+      qrCodeDiv.style.top = "0";
+      qrCodeDiv.style.left = "0";
+      qrCodeDiv.style.width = "100%";
+      qrCodeDiv.style.height = "100%";
+      qrCodeDiv.style.backgroundColor = "white";
+      qrCodeDiv.appendChild(qrCodeImage);
+
+      document.body.appendChild(qrCodeDiv);
       arSystem.stop(); // stop the AR system
     }
   }
