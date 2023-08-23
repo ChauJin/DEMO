@@ -37,11 +37,27 @@
       }
 
 
-      const stopButton = document.getElementById("stop-button");
+      const stopButton = document.getElementById("#stop-button");
+      const startButton = document.getElementById("#start-button");
+      const pauseARButton = document.getElementById("#pause-button");
+      const pauseKeepVideoARButton = document.getElementById("#pauseKeepVideoAR-button");
+      const unpaseButton = document.getElementById("#unpause-button");
 
       stopButton.addEventListener('click', function (evt) {
         stopAR();
       });
+      startButton.addEventListener('click', function (evt) {
+        start();
+      });
+      pauseARButton.addEventListener('click', function (evt) {
+        pause(false);
+      });
+      pauseKeepVideoARButton.addEventListener('click', function (evt) {
+        pause(true);
+      }); unpaseButton.addEventListener('click', function (evt) {
+        unpause();
+      });
+
 
 
       profileButton.setAttribute("visible", true);
@@ -257,8 +273,17 @@
     }
   </style>
 </head>
- <button id="stop-button">Stop</button>
+
 <body>
+  <div> <button id="start-button">start</button></div>
+  <div> <button id="stop-button">Stop</button></div>
+  <div> <button id="pause-button">pause</button></div>
+  <div> <button id="pauseKeepVideoAR-button">pauseKeepVideoAR</button></div>
+  <div> <button id="unpause-button">unpause</button></div>
+
+
+
+
   <div class="example-container">
     <div id="example-scanning-overlay" class="hidden">
       <div class="inner">
