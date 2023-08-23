@@ -14,6 +14,7 @@
       const emailButton = document.querySelector("#email-button");
       const locationButton = document.querySelector("#location-button");
       const text = document.querySelector("#text");
+      const text2 = document.querySelector("#text2");
 
       profileButton.setAttribute("visible", true);
       setTimeout(() => {
@@ -296,8 +297,7 @@
             height="0.15" width="0.15"></a-image>
         </a-entity>
 
-        <a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0"
-        geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
+        
         
         <a-image visible=false id="profile-button" class="clickable" src="#icon-profile" position="-0.42 -0.6 0"
           height="0.15" width="0.15"
@@ -319,6 +319,9 @@
 
         <a-text id="text" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0"
           geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
+
+          <a-text id="text2" class="clickable" value="" color="black" align="center" width="2" position="0 -1 0"
+        geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
       </a-entity>
     </a-scene>
   </div>
