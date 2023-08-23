@@ -437,6 +437,8 @@
     if (score === 5) {
       const qrCodeImage = document.createElement("img");
       qrCodeImage.setAttribute("src", "./assets/redeemQRcode.png");
+      qrCodeImage.style.display = "block";
+      qrCodeImage.style.margin = "auto";
 
       const qrCodeDiv = document.createElement("div");
       qrCodeDiv.style.position = "absolute";
@@ -445,6 +447,9 @@
       qrCodeDiv.style.width = "100%";
       qrCodeDiv.style.height = "100%";
       qrCodeDiv.style.backgroundColor = "white";
+      qrCodeDiv.style.display = "flex";
+      qrCodeDiv.style.justifyContent = "center";
+      qrCodeDiv.style.alignItems = "center";
       qrCodeDiv.appendChild(qrCodeImage);
 
       document.body.appendChild(qrCodeDiv);
