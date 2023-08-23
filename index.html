@@ -14,6 +14,16 @@
       const emailButton = document.querySelector("#email-button");
       const locationButton = document.querySelector("#location-button");
       const text = document.querySelector("#text");
+      // Define the arSystem variable
+      const arSystem = new MindAR.ImageARSystem();
+
+      // Get the pause-keep-video-button element
+      const pauseKeepVideoButton = document.getElementById("pause-keep-video-button");
+
+      // Add an event listener to the button
+      pauseKeepVideoButton.addEventListener('click', () => {
+        arSystem.pause(true); // pause AR, keep video
+      });
 
 
       profileButton.setAttribute("visible", true);
@@ -296,8 +306,9 @@
             height="0.15" width="0.15"></a-image>
         </a-entity>
 
-        <a-text id="text" class="clickable" value="What is the capital of France?" color="black" align="center" width="2" position="0 -1 0"
-          geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.5"></a-text>
+        <a-text id="text" class="clickable" value="What is the capital of France?" color="black" align="center"
+          width="2" position="0 -1 0" geometry="primitive:plane; height: 0.1; width: 2;"
+          material="opacity: 0.5"></a-text>
 
         <a-image visible=false id="profile-button" class="clickable" src="#icon-profile" position="-0.42 -1.5 0"
           height="0.15" width="0.15"
@@ -351,10 +362,10 @@
           answer: "B"
         }
       ];
-    
+
       var currentQuestion = 0;
       var score = 0;
-    
+
       function checkAnswer(choice) {
         if (choice === questions[currentQuestion].answer) {
           document.getElementById("text2").setAttribute("value", "Correct!");
@@ -362,14 +373,14 @@
         } else {
           document.getElementById("text2").setAttribute("value", "Wrong!");
         }
-    
+
         currentQuestion++;
-    
+
         if (currentQuestion < questions.length) {
           document.getElementById("text").setAttribute("value", questions[currentQuestion].question);
         } else {
           document.getElementById("text").setAttribute("value", "Game over! Your score is " + score + "/5.");
-    
+
           if (score === 5) {
             document.getElementById("redeem-button").setAttribute("visible", true);
           }
