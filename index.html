@@ -58,13 +58,13 @@
     });
   </script>
 
-  <div style="position: absolute; z-index: 1000">
-    <button id="example-start-button">Start</button>
-    <button id="example-pause-button">Pause</button>
-    <button id="example-pause-keep-video-button">Pause (keep video)</button>
-    <button id="example-unpause-button">UnPause</button>
-    <button id="example-stop-button">Stop</button>
-  </div>
+<div style="position: absolute; z-index: 1000">
+  <button id="example-start-button">Start</button>
+  <button id="example-pause-button">Pause</button>
+  <button id="example-pause-keep-video-button">Pause (keep video)</button>
+  <button id="example-unpause-button">UnPause</button>
+  <button id="example-stop-button">Stop</button>
+</div>
 
 
 
@@ -387,7 +387,7 @@
         <a-gltf-model id="avatar" rotation="90 0 0" position="0 0.5 0" scale="0.010 0.010 0.010"
           src="#avatarModel"></a-gltf-model>
 
-
+          
 
       </a-entity>
     </a-scene>
@@ -416,13 +416,8 @@
         }
       ];
 
-      var questions = [
-        // ... (rest of your questions array)
-      ];
-
       var currentQuestion = 0;
       var score = 0;
-      var roundsPlayed = 0;
 
       function checkAnswer(choice) {
         if (choice === questions[currentQuestion].answer) {
@@ -437,32 +432,13 @@
         if (currentQuestion < questions.length) {
           document.getElementById("text").setAttribute("value", questions[currentQuestion].question);
         } else {
-          roundsPlayed++;
+          document.getElementById("text").setAttribute("value", "Game over! Your score is " + score + "/5.");
 
-          if (score === 5 && roundsPlayed === 5) {
-            // Stop the AR scene
-            const arSystem = document.querySelector('a-scene').systems["mindar-image-system"];
-            arSystem.stop();
-
-            // Display the winning picture in full screen
-            const winImage = document.createElement("img");
-            winImage.src = "./assets/redeemQRcode.png"; // Change this to your actual image URL
-            winImage.style.position = "fixed";
-            winImage.style.top = "0";
-            winImage.style.left = "0";
-            winImage.style.width = "100vw";
-            winImage.style.height = "100vh";
-            winImage.style.zIndex = "9999";
-
-            document.body.appendChild(winImage);
-          } else {
-            document.getElementById("text").setAttribute("value", "Round " + (roundsPlayed + 1) + ": " + questions[0].question);
-            currentQuestion = 0;
-            score = 0;
+          if (score === 5) {
+            document.getElementById("redeem-button").setAttribute("visible", true);
           }
         }
       }
-
     </script>
   </div>
 </body>
