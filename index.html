@@ -36,6 +36,14 @@
         arSystem.unpause();
       }
 
+
+      const stopButton = document.getElementById("stop-button");
+
+      stopButton.addEventListener('click', function (evt) {
+        stopAR();
+      });
+
+
       profileButton.setAttribute("visible", true);
       setTimeout(() => {
         webButton.setAttribute("visible", true);
@@ -249,7 +257,7 @@
     }
   </style>
 </head>
-
+ <button id="stop-button">Stop</button>
 <body>
   <div class="example-container">
     <div id="example-scanning-overlay" class="hidden">
