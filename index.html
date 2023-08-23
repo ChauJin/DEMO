@@ -15,51 +15,6 @@
       const locationButton = document.querySelector("#location-button");
       const text = document.querySelector("#text");
 
-
-      function startAR() {
-        arSystem.start();
-      }
-
-      function stopAR() {
-        arSystem.stop();
-      }
-
-      function pauseAR() {
-        arSystem.pause(false); // pause AR, pause video
-      }
-
-      function pauseKeepVideoAR() {
-        arSystem.pause(true); // pause AR, keep video
-      }
-
-      function unpauseAR() {
-        arSystem.unpause();
-      }
-
-
-      const stopButton = document.getElementById("#stop-button");
-      const startButton = document.getElementById("#start-button");
-      const pauseARButton = document.getElementById("#pause-button");
-      const pauseKeepVideoARButton = document.getElementById("#pauseKeepVideoAR-button");
-      const unpaseButton = document.getElementById("#unpause-button");
-
-      stopButton.addEventListener('click', function (evt) {
-        stopAR();
-      });
-      startButton.addEventListener('click', function (evt) {
-        start();
-      });
-      pauseARButton.addEventListener('click', function (evt) {
-        pause(false);
-      });
-      pauseKeepVideoARButton.addEventListener('click', function (evt) {
-        pause(true);
-      }); unpaseButton.addEventListener('click', function (evt) {
-        unpause();
-      });
-
-
-
       profileButton.setAttribute("visible", true);
       setTimeout(() => {
         webButton.setAttribute("visible", true);
@@ -275,6 +230,50 @@
 </head>
 
 <body>
+  <script>
+ function startAR() {
+        arSystem.start();
+      }
+
+      function stopAR() {
+        arSystem.stop();
+      }
+
+      function pauseAR() {
+        arSystem.pause(false); // pause AR, pause video
+      }
+
+      function pauseKeepVideoAR() {
+        arSystem.pause(true); // pause AR, keep video
+      }
+
+      function unpauseAR() {
+        arSystem.unpause();
+      }
+
+
+      const stopButton = document.getElementById("#stop-button");
+      const startButton = document.getElementById("#start-button");
+      const pauseARButton = document.getElementById("#pause-button");
+      const pauseKeepVideoARButton = document.getElementById("#pauseKeepVideoAR-button");
+      const unpaseButton = document.getElementById("#unpause-button");
+
+      stopButton.addEventListener('click', function (evt) {
+        stopAR();
+      });
+      startButton.addEventListener('click', function (evt) {
+        start();
+      });
+      pauseARButton.addEventListener('click', function (evt) {
+        pause(false);
+      });
+      pauseKeepVideoARButton.addEventListener('click', function (evt) {
+        pause(true);
+      }); unpaseButton.addEventListener('click', function (evt) {
+        unpause();
+      });
+
+  </script>
   <div> <button id="start-button">start</button>
     <button id="stop-button">Stop</button>
     <button id="pause-button">pause</button>
