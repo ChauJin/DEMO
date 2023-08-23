@@ -429,6 +429,7 @@
 
       var currentQuestion = 0;
       var score = 0;
+      var roundsWon = 0;
 
       function checkAnswer(choice) {
         if (choice === questions[currentQuestion].answer) {
@@ -446,8 +447,11 @@
           document.getElementById("text").setAttribute("value", "Game over! Your score is " + score + "/5.");
 
           if (score === 5) {
+            roundsWon++;
+            var rewardImageSrc = "./assets/redeemQRcode" + (roundsWon * 10) + ".png";
+
             const qrCodeImage = document.createElement("img");
-            qrCodeImage.setAttribute("src", "./assets/redeemQRcode.png");
+            qrCodeImage.setAttribute("src", rewardImageSrc);
             qrCodeImage.style.display = "block";
             qrCodeImage.style.margin = "auto";
 
@@ -468,6 +472,7 @@
           }
         }
       }
+
     </script>
   </div>
 </body>
