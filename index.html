@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes">
-  
+
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
   <script>
@@ -340,7 +340,7 @@
         </a-entity>
 
         <a-text id="text" class="clickable"
-          value="According to which calendar is the Mid-Autumn Festival's date determined?/n A. Gregorian calendar/n B. Lunar calendar/n C. Lunisolar calendar/n D. International standard calendar"
+          value="According to which calendar is the Mid-Autumn Festival's date determined?<br>A. Gregorian calendar<br>B. Lunar calendar<br>C. Lunisolar calendar<br>D. International standard calendar"
           color="black" align="center" width="2" position="0 -1 0" geometry="primitive:plane; height: 0.3; width: 3;"
           material="opacity: 0.5"></a-text>
 
@@ -372,28 +372,28 @@
     </a-scene>
 
     <script>
-      var questions = [
-        {
-          question: "According to which calendar is the Mid-Autumn Festival's date determined? A. Gregorian calendar B. Lunar calendar C. Lunisolar calendar D. International standard calendar",
-          answer: "B"
-        },
-        {
-          question: "你好Which celestial phenomenon is primarily celebrated during the Mid-Autumn Festival? A. Solar eclipse B. Start of the rainy season C. Lunar eclipse D. Appearance of a nebula",
-          answer: "C"
-        },
-        {
-          question: "What is another name for the Mid-Autumn Festival? A. Spring Festival B. Lantern Festival C. Dragon Boat Festival D. Moonlit Night Festival",
-          answer: "D"
-        },
-        {
-          question: "What do people traditionally admire during the Mid-Autumn Festival? A. Fireworks B. Lanterns C. Firecrackers D. Paintings",
-          answer: "B"
-        },
-        {
-          question: "What is the most famous food during the Mid-Autumn Festival? A. Rice cakes B. Dumplings C. Rice dumplings D. Sesame balls",
-          answer: "C"
-        }
-      ];
+     var questions = [
+  {
+    question: "According to which calendar is the Mid-Autumn Festival's date determined?<br>A. Gregorian calendar<br>B. Lunar calendar<br>C. Lunisolar calendar<br>D. International standard calendar",
+    answer: "B"
+  },
+  {
+    question: "Which celestial phenomenon is primarily celebrated during the Mid-Autumn Festival?<br>A. Solar eclipse<br>B. Start of the rainy season<br>C. Lunar eclipse<br>D. Appearance of a nebula",
+    answer: "C"
+  },
+  {
+    question: "What is another name for the Mid-Autumn Festival?<br>A. Spring Festival<br>B. Lantern Festival<br>C. Dragon Boat Festival<br>D. Moonlit Night Festival",
+    answer: "D"
+  },
+  {
+    question: "What do people traditionally admire during the Mid-Autumn Festival?<br>A. Fireworks<br>B. Lanterns<br>C. Firecrackers<br>D. Paintings",
+    answer: "B"
+  },
+  {
+    question: "What is the most famous food during the Mid-Autumn Festival?<br>A. Rice cakes<br>B. Dumplings<br>C. Rice dumplings<br>D. Sesame balls",
+    answer: "C"
+  }
+];
 
 
       var currentQuestion = 0;
