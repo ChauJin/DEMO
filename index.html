@@ -459,6 +459,10 @@
             qrCodeImage.style.maxWidth = "100%"; // Set maximum width to fit the screen
             qrCodeImage.style.maxHeight = "100%"; // Set maximum height to fit the screen
 
+
+            var audio = new Audio("congratulations.mp3"); // Create a new audio element with the congratulations sound effect
+            audio.play(); // Play the audio file
+
             const qrCodeDiv = document.createElement("div");
             qrCodeDiv.style.position = "absolute";
             qrCodeDiv.style.top = "0";
