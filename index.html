@@ -463,24 +463,6 @@
             var audio = new Audio("./music/congratulations.mp3"); // Create a new audio element with the congratulations sound effect
             audio.play(); // Play the audio file
 
-            const reloadButton = document.createElement("button");
-            reloadButton.textContent = "Reload Page";
-            reloadButton.style.position = "absolute";
-            reloadButton.style.bottom = "10px";
-            reloadButton.style.right = "10px";
-            reloadButton.style.padding = "10px";
-            reloadButton.style.border = "none";
-            reloadButton.style.borderRadius = "5px";
-            reloadButton.style.backgroundColor = "#ff6600";
-            reloadButton.style.color = "white";
-            reloadButton.style.fontSize = "16px";
-            reloadButton.style.cursor = "pointer";
-            reloadButton.addEventListener("click", function () {
-              location.reload();
-            });
-
-            document.body.appendChild(reloadButton);
-
             const qrCodeDiv = document.createElement("div");
             qrCodeDiv.style.position = "absolute";
             qrCodeDiv.style.top = "0";
@@ -504,12 +486,6 @@
 
             document.body.appendChild(qrCodeDiv);
             arSystem.stop(); // stop the AR system
-
-            // Hide the buttons
-            document.getElementById("example-start-button").style.display = "none";
-            document.getElementById("example-pause-keep-video-button").style.display = "none";
-            document.getElementById("example-stop-button").style.display = "none";
-
           }
         }
 
