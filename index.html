@@ -478,6 +478,9 @@
             reloadButton.style.zIndex = "9999";
             reloadButton.addEventListener("click", function () {
               location.reload();
+              startButton.style.display = "none"; // Hide the "Start" button
+              stopButton.style.display = "none"; // Hide the "Stop" button
+              pauseKeepVideoButton.style.display = "none"; // Hide the "Press Me First" button
             });
 
             document.body.appendChild(reloadButton);
