@@ -427,64 +427,64 @@
       var score = 0;
       var roundsWon = 0;
 
-      function checkAnswer(answer) {
-        var correctAnswer = "C"; // Change this to the correct answer
+      function checkAnswer(choice) {
+        var correctAnswer = questions[currentQuestion].answer;
         var audio = new Audio(); // Create a new audio element
 
-        if (answer === correctAnswer) {
+        if (choice === correctAnswer) {
           audio.src = "./music/bingo.mp3"; // Set the audio source to the bingo sound effect
-          document.getElementById("text2").setAttribute("value", "Correct!"); // Update the text to display "Correct!"
+          document.getElementById("text2").setAttribute("value", "Correct!");
+          score++;
+          roundsWon++;
         } else {
           audio.src = "./music/lose.mp3"; // Set the audio source to the lose sound effect
-          document.getElementById("text2").setAttribute("value", "Incorrect!"); // Update the text to display "Incorrect!"
+          document.getElementById("text2").setAttribute("value", "Wrong!");
+        }
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+          document.getElementById("text").setAttribute("value", questions[currentQuestion].question);
+        } else {
+          document.getElementById("text").setAttribute("value", "Game over! Your score is " + score + "/5.");
+
+          if (score >= 1 && roundsWon <= 5) {
+            var rewardImageSrc = "./assets/redeemQRcode" + (roundsWon * 10) + ".png";
+
+            const qrCodeImage = document.createElement("img");
+            qrCodeImage.setAttribute("src", rewardImageSrc);
+            qrCodeImage.style.display = "block";
+            qrCodeImage.style.margin = "auto";
+            qrCodeImage.style.maxWidth = "100%"; // Set maximum width to fit the screen
+            qrCodeImage.style.maxHeight = "100%"; // Set maximum height to fit the screen
+
+            const qrCodeDiv = document.createElement("div");
+            qrCodeDiv.style.position = "absolute";
+            qrCodeDiv.style.top = "0";
+            qrCodeDiv.style.left = "0";
+            qrCodeDiv.style.width = "100%";
+            qrCodeDiv.style.height = "100%";
+            qrCodeDiv.style.backgroundColor = "white";
+            qrCodeDiv.style.display = "flex";
+            qrCodeDiv.style.justifyContent = "center";
+            qrCodeDiv.style.alignItems = "center";
+            qrCodeDiv.appendChild(qrCodeImage);
+
+            const scoreText = document.createElement("p");
+            scoreText.textContent = "Total Score: " + score + "/5";
+            scoreText.style.position = "absolute";
+            scoreText.style.bottom = "10px";
+            scoreText.style.left = "50%";
+            scoreText.style.transform = "translateX(-50%)";
+            scoreText.style.fontSize = "16px";
+            qrCodeDiv.appendChild(scoreText);
+
+            document.body.appendChild(qrCodeDiv);
+            arSystem.stop(); // stop the AR system
+          }
         }
 
         audio.play(); // Play the audio file
-      }
-
-      currentQuestion++;
-
-      if (currentQuestion < questions.length) {
-        document.getElementById("text").setAttribute("value", questions[currentQuestion].question);
-      } else {
-        document.getElementById("text").setAttribute("value", "Game over! Your score is " + score + "/5.");
-
-        if (score >= 1 && roundsWon <= 5) {
-          var rewardImageSrc = "./assets/redeemQRcode" + (roundsWon * 10) + ".png";
-
-          const qrCodeImage = document.createElement("img");
-          qrCodeImage.setAttribute("src", rewardImageSrc);
-          qrCodeImage.style.display = "block";
-          qrCodeImage.style.margin = "auto";
-          qrCodeImage.style.maxWidth = "100%"; // Set maximum width to fit the screen
-          qrCodeImage.style.maxHeight = "100%"; // Set maximum height to fit the screen
-
-          const qrCodeDiv = document.createElement("div");
-          qrCodeDiv.style.position = "absolute";
-          qrCodeDiv.style.top = "0";
-          qrCodeDiv.style.left = "0";
-          qrCodeDiv.style.width = "100%";
-          qrCodeDiv.style.height = "100%";
-          qrCodeDiv.style.backgroundColor = "white";
-          qrCodeDiv.style.display = "flex";
-          qrCodeDiv.style.justifyContent = "center";
-          qrCodeDiv.style.alignItems = "center";
-          qrCodeDiv.appendChild(qrCodeImage);
-
-          const scoreText = document.createElement("p");
-          scoreText.textContent = "Total Score: " + score + "/5";
-          scoreText.style.position = "absolute";
-          scoreText.style.bottom = "10px";
-          scoreText.style.left = "50%";
-          scoreText.style.transform = "translateX(-50%)";
-          scoreText.style.fontSize = "16px";
-          qrCodeDiv.appendChild(scoreText);
-
-          document.body.appendChild(qrCodeDiv);
-          arSystem.stop(); // stop the AR system
-        }
-      }
-
       }
     </script>
   </div>
