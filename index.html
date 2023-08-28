@@ -486,32 +486,49 @@
             document.body.appendChild(reloadButton);
 
             const qrCodeDiv = document.createElement("div");
-qrCodeDiv.style.position = "absolute";
-qrCodeDiv.style.top = "0";
-qrCodeDiv.style.left = "0";
-qrCodeDiv.style.width = "100%";
-qrCodeDiv.style.height = "100%";
-qrCodeDiv.style.backgroundColor = "white";
-qrCodeDiv.style.display = "flex";
-qrCodeDiv.style.justifyContent = "center";
-qrCodeDiv.style.alignItems = "center";
-qrCodeDiv.appendChild(qrCodeImage);
+            qrCodeDiv.style.position = "absolute";
+            qrCodeDiv.style.top = "0";
+            qrCodeDiv.style.left = "0";
+            qrCodeDiv.style.width = "100%";
+            qrCodeDiv.style.height = "100%";
+            qrCodeDiv.style.backgroundColor = "white";
+            qrCodeDiv.style.display = "flex";
+            qrCodeDiv.style.justifyContent = "center";
+            qrCodeDiv.style.alignItems = "center";
+            qrCodeDiv.appendChild(qrCodeImage);
 
-const scoreText = document.createElement("p");
-scoreText.textContent = "Total Score: " + score + "/5";
-scoreText.style.position = "absolute";
-scoreText.style.bottom = "10px";
-scoreText.style.left = "50%";
-scoreText.style.transform = "translateX(-50%)";
-scoreText.style.fontSize = "16px";
-qrCodeDiv.appendChild(scoreText);
+            const scoreText = document.createElement("p");
+            scoreText.textContent = "Total Score: " + score + "/5";
+            scoreText.style.position = "absolute";
+            scoreText.style.bottom = "10px";
+            scoreText.style.left = "50%";
+            scoreText.style.transform = "translateX(-50%)";
+            scoreText.style.fontSize = "16px";
+            qrCodeDiv.appendChild(scoreText);
 
-document.body.appendChild(qrCodeDiv);
+            document.body.appendChild(qrCodeDiv);
 
-startButton.style.display = "none"; // Hide the "Start" button
-stopButton.style.display = "none"; // Hide the "Stop" button
-// pauseKeepVideoButton.style.display = "none"; // Hide the "Press Me First" button
+            startButton.style.display = "none"; // Hide the "Start" button
+            stopButton.style.display = "none"; // Hide the "Stop" button
+            pauseKeepVideoButton.style.display = "none"; // Hide the "Press Me First" button
             arSystem.stop(); // stop the AR system
+
+            // Add animation to the QR code div
+            qrCodeDiv.style.animation = "zoomIn 0.5s ease-in-out forwards";
+
+            // Define the CSS animation
+            const style = document.createElement("style");
+            style.textContent = `
+                                @keyframes zoomIn {
+                                  from {
+                                    transform: scale(0);
+                                  }
+                                  to {
+                                    transform: scale(1);
+                                  }
+                                }
+                              `;
+            document.head.appendChild(style);
           }
         }
 
