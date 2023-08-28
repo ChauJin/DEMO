@@ -175,6 +175,7 @@
 
   <style>
     #example-pause-keep-video-button {
+      position: relative;
       background-color: #ff6600;
       color: white;
       border: none;
@@ -182,6 +183,16 @@
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
+    }
+
+    #example-pause-keep-video-button::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 10px solid transparent;
+      border-bottom-color: #ff6600;
     }
 
     .button-container {
