@@ -464,33 +464,33 @@
             audio.play(); // Play the audio file
 
             const qrCodeDiv = document.createElement("div");
-qrCodeDiv.style.position = "absolute";
-qrCodeDiv.style.top = "0";
-qrCodeDiv.style.left = "0";
-qrCodeDiv.style.width = "100%";
-qrCodeDiv.style.height = "100%";
-qrCodeDiv.style.backgroundColor = "white";
-qrCodeDiv.style.display = "flex";
-qrCodeDiv.style.justifyContent = "center";
-qrCodeDiv.style.alignItems = "center";
-qrCodeDiv.appendChild(qrCodeImage);
+            qrCodeDiv.style.position = "absolute";
+            qrCodeDiv.style.top = "0";
+            qrCodeDiv.style.left = "0";
+            qrCodeDiv.style.width = "100%";
+            qrCodeDiv.style.height = "100%";
+            qrCodeDiv.style.backgroundColor = "white";
+            qrCodeDiv.style.display = "flex";
+            qrCodeDiv.style.justifyContent = "center";
+            qrCodeDiv.style.alignItems = "center";
+            qrCodeDiv.appendChild(qrCodeImage);
 
-const scoreText = document.createElement("p");
-scoreText.textContent = "Total Score: " + score + "/5";
-scoreText.style.position = "absolute";
-scoreText.style.bottom = "10px";
-scoreText.style.left = "50%";
-scoreText.style.transform = "translateX(-50%)";
-scoreText.style.fontSize = "16px";
-qrCodeDiv.appendChild(scoreText);
+            const scoreText = document.createElement("p");
+            scoreText.textContent = "Total Score: " + score + "/5";
+            scoreText.style.position = "absolute";
+            scoreText.style.bottom = "10px";
+            scoreText.style.left = "50%";
+            scoreText.style.transform = "translateX(-50%)";
+            scoreText.style.fontSize = "16px";
+            qrCodeDiv.appendChild(scoreText);
 
-document.body.appendChild(qrCodeDiv);
-arSystem.stop(); // stop the AR system
+            document.body.appendChild(qrCodeDiv);
+            arSystem.stop(); // stop the AR system
 
-// Hide the buttons
-document.getElementById("example-start-button").style.display = "none";
-document.getElementById("example-pause-keep-video-button").style.display = "none";
-document.getElementById("example-stop-button").style.display = "none";
+            // Hide the buttons
+            document.getElementById("example-start-button").style.display = "none";
+            document.getElementById("example-pause-keep-video-button").style.display = "none";
+            document.getElementById("example-stop-button").style.display = "none";
           }
         }
 
