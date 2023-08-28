@@ -366,8 +366,10 @@
 
         <a-text id="text2" class="clickable" value="" color="black" align="center" width="2" position="0 -2 0"
           geometry="primitive:plane; height: 0.1; width: 2;" material="opacity: 0.9"></a-text>
-        <a-gltf-model id="avatar" rotation="90 0 0" position="0 0.5 0" scale="0.010 0.010 0.010"
-          src="#avatarModel"></a-gltf-model>
+        <!-- <a-gltf-model id="avatar" rotation="90 0 0" position="0 0.5 0" scale="0.010 0.010 0.010"
+          src="#avatarModel"></a-gltf-model> -->
+
+          <a-gltf-model id="avatar" rotation="90 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
       </a-entity>
     </a-scene>
 
