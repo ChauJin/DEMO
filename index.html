@@ -188,11 +188,12 @@
     #example-pause-keep-video-button::before {
       content: "";
       position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 50%;
+      left: -20px;
+      transform: translateY(-50%);
       border: 10px solid transparent;
-      border-bottom-color: #ff6600;
+      border-right-color: #ff6600;
+      /* Change this to "border-left-color" to reverse the direction of the arrow */
     }
 
     .button-container {
