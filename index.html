@@ -97,9 +97,9 @@
 
       portfolio.setAttribute("visible", true);
 
-      const showPortfolioItem = (item) => {
-        for (let i = 0; i <= 8; i++) {
-          document.querySelector("#portfolio-item" + i).setAttribute("visible", i === item);
+      const showPortfolioItem = () => {
+        for (let i = 1; i <= 8; i++) {
+          document.querySelector("#portfolio-item" + i).setAttribute("visible", true);
         }
       }
       const id = setInterval(() => {
@@ -332,7 +332,7 @@
         <img id="commercialBanner4" src="./assets/20.jpg" />
         <img id="commercialBanner5" src="./assets/4.jpg" />
         <img id="commercialBanner6" src="./assets/5.jpg" />
-  
+
 
         <a-asset-item id="avatarModel" src="./assets/PARKnShop3.gltf" gesture-handler scale="3"
           rotation="0 90 0"></a-asset-item>
@@ -371,7 +371,8 @@
             </a-image>
           </a-entity>
           <a-entity id="portfolio-item4" visible=false>
-            <a-image class="clickable" src="#commercialBanner2" alpha-test="0.5" position="0 0 0" height="0.552" width="1">
+            <a-image class="clickable" src="#commercialBanner2" alpha-test="0.5" position="0 0 0" height="0.552"
+              width="1">
             </a-image>
           </a-entity>
           <a-entity id="portfolio-item5" visible=false>
@@ -380,7 +381,8 @@
             </a-image>
           </a-entity>
           <a-entity id="portfolio-item6" visible=false>
-            <a-image class="clickable" src="#commercialBanner4" alpha-test="0.5" position="0 0 0" height="0.552" width="1">
+            <a-image class="clickable" src="#commercialBanner4" alpha-test="0.5" position="0 0 0" height="0.552"
+              width="1">
             </a-image>
           </a-entity>
           <a-entity id="portfolio-item7" visible=false>
@@ -389,7 +391,8 @@
             </a-image>
           </a-entity>
           <a-entity id="portfolio-item8" visible=false>
-            <a-image class="clickable" src="#commercialBanner6" alpha-test="0.5" position="0 0 0" height="0.552" width="1">
+            <a-image class="clickable" src="#commercialBanner6" alpha-test="0.5" position="0 0 0" height="0.552"
+              width="1">
             </a-image>
           </a-entity>
 
