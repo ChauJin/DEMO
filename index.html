@@ -97,11 +97,11 @@
 
       portfolio.setAttribute("visible", true);
 
-      const showPortfolioItem = (item) => {
-        for (let i = 0; i <= 8; i++) {
-          document.querySelector("#portfolio-item" + i).setAttribute("visible", i === item);
-        }
-      }
+      const showPortfolioItem = () => {
+  for (let i = 0; i <= 8; i++) {
+    document.querySelector("#portfolio-item" + i).setAttribute("visible", true);
+  }
+}
       const id = setInterval(() => {
         y += 0.008;
         if (y >= 0.6) {
